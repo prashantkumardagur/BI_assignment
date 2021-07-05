@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <title>Add Recipe</title>
+    <style>
+        *{padding: 0; margin: 0; box-sizing: border-box; font-family: Roboto, Arial, Helvetica, sans-serif;}
+        body{padding: 50px 100px;}
+        h1{font-size: 40px; margin-bottom: 50px;}
+        label{font-weight: 500; color: #0652dd; display: block;}
+        input, textarea{background-color: aliceblue; outline: none; border: none; padding: 10px; display: block; width: 600px; border: 1px solid rgb(179, 209, 255); margin-bottom: 20px;}
+        input{ font-size: 20px;}
+        input:focus, textarea:focus{border: 2px solid rgb(52, 147, 255);}
+        textarea{font-size: 16px; height: 200px; overflow-y: scroll; resize: none;}
+        button{outline: none; border: none; background: none;}
+        .btn1{ width: fit-content; border-radius: 10px; color: #0652dd; padding: 6px 15px; font-size: 16px; font-weight: 500; margin-bottom: 30px; border: 2px solid #0652dd; cursor: pointer;}
+        li{font-weight: 500; font-size: 20px; background-color: #c6e4ff; width: 600px; padding: 10px; margin-bottom: 10px; position: relative;}
+        ul{margin: 20px 0; list-style: none; font-size: 20px; font-weight: 500;}
+        .btn2{position: absolute; right: 0; top: 0; display: block; height: 100%; display: flex; align-items: center; justify-content: center;
+             background-color: #ff2626; color: white; width: 100px; font-size: 16px; cursor: pointer;}
+        .btn3{background-color: #0652dd; padding: 15px 30px; font-size: 24px; font-weight: 700; color: white; border-radius: 10px; margin-top: 30px;}
+    </style>
+</head>
+<body>
+    <h1>Add New Recipe</h1>
+    <form id="rform">
+        <label for="name">RECIPE NAME</label>
+        <input type="text" id="name" name="name" required autofocus>
+        <label for="para">RECIPE DISCRIPTION</label>
+        <textarea name="para" id="para" required></textarea>
+        <label for="ing">ADD INGREDIENT</label>
+        <input type="text" id="ing" name="ing">
+        <div class="btn1" onclick="createList(1)">Add ingredient</div>
+        <label>INGREDIENTS REQUIRED</label>
+        <ul id="ingList">
+            No ingredients added.
+        </ul>
+        <button class="btn3" type="submit">ADD RECIPE</button>
+    </form>
+
+    <script>
+
+        var list = [];
+        var ingList = document.getElementById('ingList');
+        var ing = document.getElementById('ing');
+
+        function createList(i){
+            if(i && ing.value!='') list.push(ing.value);
+            if(list.length==0) ingList.innerHTML = "No ingredients added.";
+            else{
+                ingList.innerHTML ="";
+                list.forEach((listItem,index) => ingList.innerHTML+= "<li>"+ listItem +"<div class='btn2' onclick='deleteing("+index+")'>Delete</div></li>")
+            }
+            ing.value = "";
+            ing.focus();
+        }
+
+        function deleteing(index){
+            list.splice(index, 1);
+            createList(0);
+        }
+
+        $('#ing').keypress(function(e) {
+            if(e.which == 13) {
+                e.preventDefault();
+                createList(1);
+            }
+        });
+
+        $('#rform').submit( function(event){
+            let myObj = JSON.parse(localStorage.getItem('recipeObj'));
+            if(myObj==null){
+                myObj = {
+                    total: 0,
+                    recipeArr : []
+                }
+            }
+            var robj = {
+                name: document.getElementById('name').value,
+                recipe: document.getElementById('para').value,
+                ingredients: list
+            }
+            myObj.recipeArr.push(robj);
+            myObj.total = myObj.recipeArr.length;
+            localStorage.setItem("recipeObj", JSON.stringify(myObj));
+            event.preventDefault();
+            window.location.href="index.html?f=6";
+        })
+
+
+    </script>
+</body>
+</html>

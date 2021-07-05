@@ -1,0 +1,108 @@
+:root{
+    --c1: #0652dd;
+    --c2: #beeaff;
+    --c3: #e8f8ff;
+}
+.f30{font-size: 30px;}
+.f20{font-size: 20px;}
+.w400{font-weight: 400;}
+.w500{font-weight: 500;}
+.w700{font-weight: 700;}
+.ch{ color: var(--c1); letter-spacing: 2px;}
+.btn1{ background-color: var(--c2); padding: 20px 40px; border-radius: 50px; margin-right: 20px;}
+.btn2{background-color: var(--c1); color: white; padding: 8px 20px; font-size: 16px; font-weight: 500; border-radius: 10px;}
+
+*{padding: 0; margin: 0; box-sizing: border-box; transition: 0.2s; font-family: Roboto, Arial, Helvetica, sans-serif; }
+body{background-color: #eee;}
+button{background: none; border: none; cursor: pointer;}
+
+.container{display: grid; grid-template-columns: 400px auto; min-height: 100vh;}
+nav{ background-color: #fff; height: 100%;}
+h1{padding: 30px;}
+.links{display: block; padding: 10px 0 10px 30px; border-radius: 0 20px 20px 0; margin-right: 10px;}
+.links.selected{ background-color: var(--c2) !important; }
+.links:hover{background-color: var(--c3);}
+.links .fas{margin-right: 10px; color: #0652dd;}
+
+main{padding: 50px;}
+.section{background-color: #fff; box-shadow: 10px 10px 50px #bbb; padding: 50px; max-width: 600px; border-radius: 30px;}
+
+.watch{font-size: 100px; padding: 40px 0;}
+#ms{font-size: 50px;}
+.stopwatch .fas{font-size: 25px;}
+
+section{display: flex; align-items: center; align-content: center; margin-top: 40px;}
+.tipCalculator label{ margin-right: 10px;}
+.tipCalculator input{padding: 5px 10px; border: none; outline: none; background-color: var(--c2); font-size: 20px; border-radius: 10px; width: 200px;}
+.sliderDiv{ margin-top: 20px;}
+.slider{ 
+    margin-top: 10px;
+    padding: 0;
+    -webkit-appearance: none;
+    width: 100% !important;
+    height: 10px;
+    background: var(--c2);
+    outline: none;
+}
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--c1);
+    cursor: pointer;
+  }
+#sliderValue{position: absolute; right: 0;}
+.result{margin-top: 50px;}
+.tipResult{color: var(--c1); font-size: 50px; font-weight: 700;}
+
+.simpleCalculator{
+    display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-areas: "scrn scrn scrn scrn"
+                        " scrn scrn scrn scrn"
+                        " cbac cbac cbd cbm"
+                        " cb7 cb8 cb9 cbs"
+                        " cb4 cb5 cb6 cba"
+                        " cb1 cb2 cb3 cbe"
+                        " cb0 cb0 cb_ cbe";
+    grid-template-rows: repeat(7, 60px);
+    row-gap: 10px; column-gap: 10px;
+}
+.calcScreen{background-color: var(--c3); border-radius: 20px; padding: 20px;}
+.btnflex{display: flex; align-items: center; justify-content: center; cursor: pointer; 
+    background-color: var(--c2); border-radius: 20px; font-size: 30px; font-weight: 500;}
+#calcstr{font-size: 24px; font-weight: 500; text-align: right;}
+#calcResult{font-size: 50px; text-align: right; margin-top: 10px; font-weight: 500; color: #0652dd;}
+
+#colorTarget{height: 200px; font-size: 30px; padding: 30px; background-color: #0652dd; color: white; border-radius: 20px; margin: 30px 0 50px;}
+.colorOptions{height: 66px; font-size: 20px; font-weight: 700; color: white; padding: 20px; border-radius: 20px; cursor: pointer; margin-bottom: 10px;}
+
+.cardForm{background-color: var(--c3); padding: 20px; margin: 20px 0;}
+.cardForm h3{ margin-bottom: 20px;}
+.cardForm label{font-weight: 500;}
+.cardForm input{display: block; outline: none; border: none;padding: 10px; width: 100%; border-radius: 5px; font-size: 16px; margin-bottom: 20px;}
+.rcardgrid{display: grid; grid-template-columns: 1fr 1fr; column-gap: 20px; row-gap: 20px; margin-top: 20px;}
+.randomCard{background-color: var(--c2); border-radius: 10px; overflow: hidden;padding-bottom: 10px;}
+.randomCard p{padding: 0 10px;}
+.cph{font-weight: 700;}
+.cpb, .cpd{font-size: 14px;}
+
+#recipeSearch{width: 100%; display: block; padding: 8px; background-color: var(--c3); border: 2px solid #d3eaff; border-radius: 5px;
+    outline: none; font-size: 16px; margin: 30px 0 20px;}
+#recipeSearch:focus{border: 2px solid #0084ff;}
+.recipeList{list-style: none;}
+.recipeList li{color: black; cursor: pointer; text-decoration: none; display: block; background-color: var(--c2); padding: 10px; margin-top: 10px; font-weight: 500;}
+.recipeApp .btn2{text-decoration: none; margin-top: 30px; display: block; width: fit-content;}
+.recipeinfo{display: none;}
+.expanded .recipeinfo{display: block;}
+.expanded .recname{font-size: 24px; font-weight: 700;}
+.recipeinfo h6{font-size: 16px; padding: 20px 0 6px; color: var(--c1);}
+.recipeinfo p{white-space: pre-line;}
+.recipeinfo li{margin: 0; padding: 0;}
+
+
+.basicInfo{padding: 30px 0;}
+.pinfo{display: block; font-weight: 500;}
+.notice{padding-top: 50px; color: #f00; }
+.notice h5{font-size: 18px;}

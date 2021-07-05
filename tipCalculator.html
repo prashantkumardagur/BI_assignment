@@ -1,0 +1,17 @@
+<div class="tipCalculator section">
+    <h2 class="ch f20">TIP CALCULATOR</h2>
+    <section>
+        <label for="billAmount" class="w500 f20">Bill Amount</label>
+        <input type="number" name="billAmount" id="billAmount" min="0" value="00.00" onchange="calculateTip()" required>
+    </section>
+    <div class="sliderDiv">
+        <label for="tipPerc" class="w500 f20" style="position: relative; width: 100%; display: block;">Tip Percentage: <span id="sliderValue">20%</span></label>
+        <input type="range" min="0" max="100" value="20" class="slider" id="slider" onchange="calculateTip()" oninput="updateValue()"> 
+    </div>
+    <div class="result">
+        <p class="w500 f20">Tip Amount</p>
+        <p class="tipResult" style="margin-bottom: 20px;" id="tipAmount">&#8377; 00.00</p>
+        <p class="w500 f20">Total (Tip + Bill Amount)</p>
+        <p class="tipResult" id="totalAmount">&#8377; 00.00</p>
+    </div>
+</div>
